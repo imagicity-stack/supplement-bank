@@ -10,31 +10,36 @@ export function FeaturedCategories({ categories }: { categories: Category[] }) {
   return (
     <section className="container-page">
       <SectionHeading
+        index="01"
         eyebrow="Shop By Category"
         title="Featured Categories"
         description="Find exactly what your training needs — from protein to pre-workout to apparel."
-        link={{ href: "/categories", label: "View all categories" }}
+        link={{ href: "/categories", label: "All categories" }}
       />
 
       {categories.length > 0 ? (
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-6">
-          {categories.map((category) => (
-            <CategoryCard key={category._id} category={category} />
+          {categories.map((category, i) => (
+            <CategoryCard key={category._id} category={category} index={i + 1} />
           ))}
         </div>
       ) : (
-        // Fallback shown before the client adds categories in Sanity Studio.
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
-          {FALLBACK_CATEGORIES.slice(0, 9).map((name) => (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {FALLBACK_CATEGORIES.slice(0, 9).map((name, i) => (
             <Link
               key={name}
               href="/products"
-              className="group flex items-center justify-between rounded-2xl border border-black/[0.06] bg-white p-5 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover"
+              className="group flex items-center justify-between rounded-2xl border border-ink/10 bg-white p-5 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover"
             >
-              <span className="font-display text-base font-bold text-ink">
-                {name}
+              <span className="flex items-center gap-3">
+                <span className="font-display text-sm font-black text-ink/20">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-display text-sm font-bold uppercase tracking-tight text-ink sm:text-base">
+                  {name}
+                </span>
               </span>
-              <ArrowRightIcon className="h-5 w-5 text-brand-red transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-5 w-5 text-brand-accent-dark transition-transform group-hover:translate-x-1" />
             </Link>
           ))}
         </div>

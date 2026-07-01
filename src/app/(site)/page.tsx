@@ -1,6 +1,7 @@
 import { ApparelHighlight } from "@/components/home/ApparelHighlight";
 import { FeaturedCategories } from "@/components/home/FeaturedCategories";
 import { Hero } from "@/components/home/Hero";
+import { HowItWorks } from "@/components/home/HowItWorks";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { ProductGrid } from "@/components/ProductGrid";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -34,16 +35,17 @@ export default async function HomePage() {
     <>
       <Hero whatsappHref={whatsappHref} />
 
-      <div className="space-y-20 py-20">
+      <div className="space-y-20 py-20 sm:space-y-24 sm:py-24">
         <FeaturedCategories categories={categories} />
 
         {bestSellers.length > 0 && (
           <section className="container-page">
             <SectionHeading
+              index="02"
               eyebrow="Top Picks"
-              title="Best Selling Products"
+              title="Best Sellers"
               description="The products our customers keep coming back for."
-              link={{ href: "/products", label: "Shop all products" }}
+              link={{ href: "/products", label: "Shop all" }}
             />
             <ProductGrid products={bestSellers} whatsappNumber={whatsappNumber} />
           </section>
@@ -52,14 +54,17 @@ export default async function HomePage() {
         {featured.length > 0 && (
           <section className="container-page">
             <SectionHeading
+              index="03"
               eyebrow="Handpicked"
               title="Featured Products"
               description="Curated by our team for quality, value, and results."
-              link={{ href: "/products", label: "Shop all products" }}
+              link={{ href: "/products", label: "Shop all" }}
             />
             <ProductGrid products={featured} whatsappNumber={whatsappNumber} />
           </section>
         )}
+
+        <HowItWorks />
 
         <WhyChooseUs />
 

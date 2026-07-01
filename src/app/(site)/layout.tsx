@@ -19,11 +19,7 @@ export default async function SiteLayout({
 
   return (
     <>
-      <Navbar
-        brandName={brandName}
-        announcement={settings?.announcement}
-        whatsappHref={whatsappHref}
-      />
+      <Navbar settings={settings} brandName={brandName} whatsappHref={whatsappHref} />
       <main id="main" className="min-h-screen">
         {children}
       </main>

@@ -98,6 +98,7 @@ export const featuredCategoriesQuery = groq`
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0] {
     brandName,
+    logo,
     whatsappNumber,
     email,
     phoneNumber,

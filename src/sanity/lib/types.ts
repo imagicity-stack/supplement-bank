@@ -55,6 +55,7 @@ export interface Product {
 
 export interface SiteSettings {
   brandName?: string;
+  logo?: SanityImageWithAlt;
   whatsappNumber?: string;
   email?: string;
   phoneNumber?: string;

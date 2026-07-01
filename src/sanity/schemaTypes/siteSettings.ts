@@ -16,6 +16,14 @@ export const siteSettings = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "logo",
+      title: "Logo",
+      type: "image",
+      description:
+        "Your brand logo (shown in the header). Use a transparent PNG that looks good on a white background. Leave empty to use the built-in shield mark.",
+      options: { hotspot: false },
+    }),
+    defineField({
       name: "whatsappNumber",
       title: "WhatsApp Number",
       type: "string",
