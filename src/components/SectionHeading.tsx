@@ -10,6 +10,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   link?: { href: string; label: string };
   light?: boolean;
+  index?: string;
   className?: string;
 }
 
@@ -20,28 +21,53 @@ export function SectionHeading({
   align = "left",
   link,
   light = false,
+  index,
   className,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
+        "mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between",
         align === "center" && "sm:flex-col sm:items-center sm:text-center",
         className,
       )}
     >
       <div className={cn("max-w-2xl", align === "center" && "mx-auto")}>
-        {eyebrow && <p className="eyebrow mb-2">{eyebrow}</p>}
+        <div
+          className={cn(
+            "flex items-center gap-3",
+            align === "center" && "justify-center",
+          )}
+        >
+          {index && (
+            <span
+              className={cn(
+                "font-display text-sm font-black tabular-nums",
+                light ? "text-white/30" : "text-ink/25",
+              )}
+            >
+              {index}
+            </span>
+          )}
+          {eyebrow && (
+            <span className={cn("label", light && "label-light")}>{eyebrow}</span>
+          )}
+        </div>
         <h2
           className={cn(
-            "text-3xl sm:text-4xl",
+            "mt-3 font-display text-3xl font-black uppercase tracking-tight sm:text-[2.5rem] sm:leading-[1.05]",
             light ? "text-white" : "text-ink",
           )}
         >
           {title}
         </h2>
         {description && (
-          <p className={cn("mt-3 text-base", light ? "text-white/70" : "text-ink/60")}>
+          <p
+            className={cn(
+              "mt-4 text-base leading-relaxed",
+              light ? "text-white/60" : "text-ink/55",
+            )}
+          >
             {description}
           </p>
         )}
@@ -50,12 +76,16 @@ export function SectionHeading({
         <Link
           href={link.href}
           className={cn(
-            "group inline-flex shrink-0 items-center gap-1.5 text-sm font-bold",
-            light ? "text-brand-accent" : "text-brand-red hover:text-brand-red-dark",
+            "group inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-wider",
+            light
+              ? "text-brand-accent"
+              : "text-ink hover:text-brand-accent-dark",
           )}
         >
           {link.label}
-          <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <span className="grid h-7 w-7 place-items-center rounded-full border border-current transition-all group-hover:bg-brand-accent group-hover:text-ink">
+            <ArrowRightIcon className="h-3.5 w-3.5" />
+          </span>
         </Link>
       )}
     </div>

@@ -29,8 +29,8 @@ export default async function CategoriesPage() {
       <section className="container-page py-12">
         {categories.length > 0 ? (
           <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-            {categories.map((category) => (
-              <CategoryCard key={category._id} category={category} />
+            {categories.map((category, i) => (
+              <CategoryCard key={category._id} category={category} index={i + 1} />
             ))}
           </div>
         ) : (
