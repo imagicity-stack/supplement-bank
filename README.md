@@ -97,6 +97,39 @@ your project's API settings on [sanity.io/manage](https://www.sanity.io/manage)
 
 ---
 
+## 🌱 Seed starter content (optional)
+
+The repo ships with a ready-made starter catalogue (**9 categories, 10 products,
+and site settings**) at `sanity/seed.ndjson`. Import it into your dataset so you
+have something to work with immediately:
+
+```bash
+# from the project root, with your project configured
+npx sanity dataset import ./sanity/seed.ndjson production --replace
+```
+
+If the CLI can't find your project/credentials, run it fully specified
+(no browser login needed — uses a token):
+
+```bash
+SANITY_AUTH_TOKEN="<your-editor-token>" \
+NEXT_PUBLIC_SANITY_PROJECT_ID="pghe25u6" \
+npx sanity dataset import ./sanity/seed.ndjson production --replace
+```
+
+> `--replace` makes it safe to re-run (documents with the same ID are
+> overwritten, not duplicated).
+
+Notes:
+- The seed products **do not include images** — add your real product photos in
+  Studio (each product renders a clean placeholder until you do).
+- Update the **WhatsApp number** in **Site Settings** after importing — the seed
+  uses a `91XXXXXXXXXX` placeholder.
+- To tweak the starter data, edit `scripts/generate-seed.mjs` and re-run
+  `npm run generate-seed`, then re-import.
+
+---
+
 ## 🗂️ Managing Content (for the client — no code needed)
 
 Open **`/studio`** and you'll see three sections:
